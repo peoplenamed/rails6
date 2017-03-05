@@ -11,16 +11,24 @@
 
   %body#site_wrapper{style: 'display:inline;'}
     = render partial: '/main/main_header'
-    .container-fluid.body-content{style: 'margin-top:10px;'}
-      - if notice
-        %p.alert.alert-success= notice
-      - if alert
-        %p.alert.alert-danger= alert
+    .container-fluid.body-content{style: 'margin-top:10px;height:100%; min-height:100%;'}
       = yield
 
     %footer.navbar-fixed-bottom
+      - if notice
+        %p.alert.alert-success{style: 'position:absolute; right:15px; bottom:10px;'}= notice
+      - if alert
+        %p.alert.alert-danger{style: 'position:absolute; right:15px; bottom:10px;'}= alert
       = render partial: '/main/main_footer'
 
+:javascript
+  setTimeout(function(){ 
+    $(document).find('.alert').fadeOut();
+  }, 3500);
+
+  $(document).find('.alert').off('click').on('click', function(){
+    $(this).fadeOut();
+  })
 
 
 

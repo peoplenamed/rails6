@@ -29,10 +29,11 @@
       -#       %a{href: "#"} Separated link
       -#     %li
       -#       %a{href: "#"} One more separated link
-    %form.navbar-form.navbar-left{role: "search"}
-      .form-group
-        %input.form-control{placeholder: "Search", type: "text"}/
-      %button.btn.btn-default{type: "submit"} Submit
+    - if current_user.present?
+      %form.navbar-form.navbar-left{role: "search"}
+        .form-group
+          %input.form-control{placeholder: "Search", type: "text"}/
+        %button.btn.btn-default{type: "submit"} Submit
     %ul.nav.navbar-nav.navbar-right
       -# %li
       -#   %a{href: "#"} Link
@@ -53,19 +54,3 @@
           - else
             %li{style: "margin: 20px;"}
               = render "/users/sessions/new"
-
-
-:javascript
-  $('.navbar-toggle').off('click').on('click', function(){
-    if ($('.navbar-collapse.navbar-ex1-collapse').is(":visible")){
-        $('#io_button').toggleClass("btn btn-primary")
-      console.log(":)")
-    }
-    else{
-      setTimeout(function(){ 
-        $('.navbar-collapse.navbar-ex1-collapse').removeClass("collapse");
-        $('#io_button').toggleClass("btn btn-primary")
-      }, 400);
-    }
-
-  })

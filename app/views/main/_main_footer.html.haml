@@ -1,2 +1,8 @@
-#main_footer{style: 'background-color: gray;height:100%'}
-  %p © 2017 PFB
+#main_footer{style: 'background-color: gray;height:40px;'}
+  .cp{style: 'float:left;'}
+    %p © 2017 PFB
+  .user{style: 'float:right;'}
+    - if current_user.present?
+      %h4=current_user.email
+    - else
+      %h4="Not signed in."

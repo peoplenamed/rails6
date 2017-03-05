@@ -10,8 +10,7 @@
     %script{:src => "https://npmcdn.com/bootstrap@4.0.0-alpha.5/dist/js/bootstrap.min.js"}
 
   %body#site_wrapper{style: 'display:inline;'}
-    .navbar.navbar-inverse.navbar-fixed-top
-      = render partial: '/main/main_header'
+    = render partial: '/main/main_header'
     .container-fluid.body-content{style: 'margin-top:10px;'}
       - if notice
         %p.alert.alert-success= notice

@@ -1,4 +1,4 @@
-%nav.navbar.navbar-default{role: "navigation"}
+.navbar.navbar-fixed-top.navbar-default{role: "navigation"}
   / Brand and toggle get grouped for better mobile display
   .navbar-header
     %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", type: "button"}
@@ -37,7 +37,7 @@
       -# %li
       -#   %a{href: "#"} Link
       %li.dropdown
-        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+        %a.dropdown-toggle#io_button{"data-toggle" => "dropdown", href: "#"}
           IO
           -# %b.caret
         %ul.dropdown-menu
@@ -53,4 +53,19 @@
           - else
             %li{style: "margin: 20px;"}
               = render "/users/sessions/new"
-  / /.navbar-collapse
+
+
+:javascript
+  $('.navbar-toggle').off('click').on('click', function(){
+    if ($('.navbar-collapse.navbar-ex1-collapse').is(":visible")){
+        $('#io_button').toggleClass("btn btn-primary")
+      console.log(":)")
+    }
+    else{
+      setTimeout(function(){ 
+        $('.navbar-collapse.navbar-ex1-collapse').removeClass("collapse");
+        $('#io_button').toggleClass("btn btn-primary")
+      }, 400);
+    }
+
+  })

@@ -43,7 +43,7 @@
           -# %b.caret
         %ul.dropdown-menu
           %li
-            %a{href: "#"} Action
+            %a#bg_animation BG ANIMATION
           %li
             %a{href: "#"} Another action
           %li
@@ -54,3 +54,13 @@
           - else
             %li{style: "margin: 20px;"}
               = render "/users/sessions/new"
+:javascript
+  $('#bg_animation').off('click').on('click', function(){
+    if (window.isPaused == true){
+      window.isPaused = false
+    }
+    else
+    {
+      window.isPaused = true
+    }
+  })

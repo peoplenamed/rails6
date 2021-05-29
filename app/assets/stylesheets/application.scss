@@ -16,72 +16,107 @@
  *= global.css
  *= normalize.css
  */
+/*! `Fresca` Bootstrap 4 theme */
+$headings-font-family:Muli;
+
+$light-shades: #F5F3ED;
+$light-accent: #8AB3CD;
+$main-color: #1593E8;
+$dark-accent: #847967;
+$dark-shades: #222E3B;
+
+$enable-grid-classes:false;
+$primary: $main-color;
+$secondary:$light-accent;
+$success:#11D3BC;
+$danger:#F67280;
+$info:$light-shades;
+$warning:#FF7E67;
+$light:$light-accent;
+$dark:$dark-accent;
+@import "bootstrap";
+@import "font_awesome5_webfont";
+
+#header_view{ 
+  background-color: $dark-accent;
+}
+#main_footer{
+  background-color: $dark-accent;
+  position:absolute;
+  bottom:0px;
+  width:100%;
+  height:40px;
+}
+#side_view {
+  margin-top:20px;
+}
+
+a:link {
+  color: $dark-shades;
+  text-decoration: none;
+}
+
+a:visited {
+  color: $dark-shades;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $light-shades;
+  text-decoration: none;
+}
+
+a:active {
+  color: $dark-shades;
+  text-decoration: none;
+}
+
 
 body{
-  color: #FFA600;
+  background-color: $light-accent;
+  color: $dark-shades;
   padding: 0px;
   margin: 0px;
-}
-
-.gradient
-{
-  width: 100%;
-  height: 100% !important;
-  padding: 0px;
-  margin: 0px;
-}
-
-#main_drop > li:hover{
-  color: white;
-  background-color: blue;
-}
-#main_drop > li{
-  background-color: white;
-  color: black;
 }
 
 
 .center {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }
 
 .center25 {
-    margin: auto;
-    width: 25%;
-    padding: 10px;
+  margin: auto;
+  width: 25%;
+  padding: 10px;
 }
 
 .center75 {
-    margin: auto;
-    width: 25%;
-    padding: 10px;
+  margin: auto;
+  width: 25%;
+  padding: 10px;
 }
 
 .header-view {
-    border:1px solid green;
-    position: absolute;
-    left:0; right:0;
-    height: 25px;
-    margin-top: 0px;
-    position: fixed;
+  position: absolute;
+  left:0; right:0;
+  height: 25px;
+  margin-top: 0px;
+  position: fixed;
   top: 0;
   width: 100%;
 }
 .side-view {
-    border:1px solid red;
     position: absolute;
     left:0; top:25px; bottom: 0;
     width: 178px;
 }
 .main-view {
-    border:1px solid blue;
     position: absolute;
     left:178px; top:25px; right:0; bottom:0;
     overflow:hidden;
 }
-
 
 .black-alerts {
     position: absolute;

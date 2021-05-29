@@ -1,14 +1,9 @@
-#side_view.graddient
-  
-  = link_to 'Home', "/", class: 'btn btn-dark button side_view_links'
-  = link_to 'Tasks', "/tasks#index", class: 'btn btn-dark button side_view_links'
-  = link_to 'Editor', "/editor/editor", class: 'btn btn-dark button side_view_links'
-  = link_to 'SSH', 'javascript:toggleSSHContainer();', :id => "sshToggle", class: 'btn btn-dark button side_view_links'
-  = link_to 'Folder', "/editor/openFolder", class: 'btn btn-dark button side_view_links'
-
-  =# Coming soon!!
-  =# link_to 'Users', "/projects#index", class: 'btn btn-dark button side_view_links'
-  =# link_to 'Reports', "/projects#index", class: 'btn btn-dark button side_view_links'
+#side_view
+  = link_to 'Home', "/", class: 'btn btn-primary button side_view_links'
+  = link_to 'Tasks', "/tasks#index", class: 'btn btn-primary button side_view_links'
+  = link_to 'Editor', "/editor/editor", class: 'btn btn-primary button side_view_links'
+  = link_to 'SSH', 'javascript:toggleSSHContainer();', :id => "sshToggle", class: 'btn btn-primary button side_view_links'
+  = link_to 'Folder', "/editor/openFolder", class: 'btn btn-primary button side_view_links'
 
 :css
   .side_view_links {

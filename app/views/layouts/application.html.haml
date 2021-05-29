@@ -10,7 +10,7 @@
     %script{:src => "https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"}
     %script{:src => "https://npmcdn.com/bootstrap@4.0.0-alpha.5/dist/js/bootstrap.min.js"}
 
-  %body.gradient
+  %body
     #messages
     - if user_signed_in?
       = tag :meta, name: 'current-user', data: {id: current_user.id}
@@ -19,7 +19,7 @@
       .side-view
         = render partial: "layouts/side_view"
     .main-view
-      .main-container{style:'width:100%; height:100%; z-index:1;'}
+      .main-container{style:'width:100%; height:100%; z-index:1; padding: 10px;'}
         = yield
         #flashy
           = render 'layouts/flash_notice'

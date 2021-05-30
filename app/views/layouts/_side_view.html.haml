@@ -1,12 +1,15 @@
-#side_view
-  = link_to 'Home', "/", class: 'btn btn-primary button side_view_links'
-  = link_to 'Tasks', "/tasks#index", class: 'btn btn-primary button side_view_links'
-  = link_to 'Editor', "/editor/editor", class: 'btn btn-primary button side_view_links'
-  = link_to 'SSH', 'javascript:toggleSSHContainer();', :id => "sshToggle", class: 'btn btn-primary button side_view_links'
-  = link_to 'Folder', "/editor/openFolder", class: 'btn btn-primary button side_view_links'
-
-:css
-  .side_view_links {
-    width: 90%;
-    margin: 5% 5px 0px 5%;
-  }
+.sidebar{"data-background-color" => "black", "data-color" => "purple", "data-image" => "../assets/img/sidebar-2.jpg"}
+  /
+    Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+    
+    Tip 2: you can also add an image using data-image tag
+  .logo
+    %a.simple-text.logo-normal{:href => "/"}=@APPLICATION_NAME
+  .sidebar-wrapper
+    %ul.nav
+      - @NAVIGATION_LINKS.each do |link|
+        %li.nav-item{class: "#{link[:active] ? 'active' : ''}"}
+          %a.nav-link{:href => "#{link[:href]}"}
+            %i.material-icons=link[:icon]
+            %p= link[:text]
+  .sidebar-background{:style => "background-image: url(../assets/img/sidebar-2.jpg) "}

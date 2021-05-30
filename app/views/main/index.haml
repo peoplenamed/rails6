@@ -1,6 +1,483 @@
-#index
-  #hola
-    Hello World.
+.container-fluid
+  .row
+    .col-xl-4.col-lg-12
+      .card.card-chart
+        .card-header.card-header-success
+          #dailySalesChart.ct-chart
+        .card-body
+          %h4.card-title Daily Sales
+          %p.card-category
+            %span.text-success
+              %i.fa.fa-long-arrow-up
+              55%
+            increase in today sales.
+        .card-footer
+          .stats
+            %i.material-icons access_time
+            updated 4 minutes ago
+    .col-xl-4.col-lg-12
+      .card.card-chart
+        .card-header.card-header-warning
+          #websiteViewsChart.ct-chart
+        .card-body
+          %h4.card-title Email Subscriptions
+          %p.card-category Last Campaign Performance
+        .card-footer
+          .stats
+            %i.material-icons access_time
+            campaign sent 2 days ago
+    .col-xl-4.col-lg-12
+      .card.card-chart
+        .card-header.card-header-danger
+          #completedTasksChart.ct-chart
+        .card-body
+          %h4.card-title Completed Tasks
+          %p.card-category Last Campaign Performance
+        .card-footer
+          .stats
+            %i.material-icons access_time
+            campaign sent 2 days ago
+  .row
+    .col-xl-3.col-lg-6.col-md-6.col-sm-6
+      .card.card-stats
+        .card-header.card-header-warning.card-header-icon
+          .card-icon
+            %i.material-icons content_copy
+          %p.card-category Used Space
+          %h3.card-title
+            49/50
+            %small GB
+        .card-footer
+          .stats
+            %i.material-icons.text-warning warning
+            %a.warning-link{:href => "#pablo"} Get More Space...
+    .col-xl-3.col-lg-6.col-md-6.col-sm-6
+      .card.card-stats
+        .card-header.card-header-success.card-header-icon
+          .card-icon
+            %i.material-icons store
+          %p.card-category Revenue
+          %h3.card-title $34,245
+        .card-footer
+          .stats
+            %i.material-icons date_range
+            Last 24 Hours
+    .col-xl-3.col-lg-6.col-md-6.col-sm-6
+      .card.card-stats
+        .card-header.card-header-danger.card-header-icon
+          .card-icon
+            %i.material-icons info_outline
+          %p.card-category Fixed Issues
+          %h3.card-title 75
+        .card-footer
+          .stats
+            %i.material-icons local_offer
+            Tracked from Github
+    .col-xl-3.col-lg-6.col-md-6.col-sm-6
+      .card.card-stats
+        .card-header.card-header-info.card-header-icon
+          .card-icon
+            %i.fa.fa-twitter
+          %p.card-category Followers
+          %h3.card-title +245
+        .card-footer
+          .stats
+            %i.material-icons update
+            Just Updated
+  .row
+    .col-lg-6.col-md-12
+      .card
+        .card-header.card-header-primary
+          %h4.card-title Employees Stats
+          %p.card-category New employees on 15th September, 2016
+        .card-body.table-responsive
+          %table.table.table-hover
+            %thead.text-warning
+              %th ID
+              %th Name
+              %th Salary
+              %th Country
+            %tbody
+              %tr
+                %td 1
+                %td Dakota Rice
+                %td $36,738
+                %td Niger
+              %tr
+                %td 2
+                %td Minerva Hooper
+                %td $23,789
+                %td Curaçao
+              %tr
+                %td 3
+                %td Sage Rodriguez
+                %td $56,142
+                %td Netherlands
+              %tr
+                %td 4
+                %td Philip Chaney
+                %td $38,735
+                %td Korea, South
+    .col-lg-6.col-md-12
+      .card
+        .card-header.card-header-tabs.card-header-warning
+          .nav-tabs-navigation
+            .nav-tabs-wrapper
+              %span.nav-tabs-title Tasks:
+              %ul.nav.nav-tabs{"data-tabs" => "tabs"}
+                %li.nav-item
+                  %a.nav-link.active{"data-toggle" => "tab", :href => "#profile"}
+                    %i.material-icons bug_report
+                    Bugs
+                    .ripple-container
+                %li.nav-item
+                  %a.nav-link{"data-toggle" => "tab", :href => "#messages"}
+                    %i.material-icons code
+                    Website
+                    .ripple-container
+                %li.nav-item
+                  %a.nav-link{"data-toggle" => "tab", :href => "#settings"}
+                    %i.material-icons cloud
+                    Server
+                    .ripple-container
+        .card-body
+          .tab-content
+            #profile.tab-pane.active
+              %table.table
+                %tbody
+                  %tr
+                    %td
+                      .form-check
+                        %label.form-check-label
+                          %input.form-check-input{:checked => "checked", :type => "checkbox", :value => ""}/
+                          %span.form-check-sign
+                            %span.check
+                    %td Sign contract for "What are conference organizers afraid of?"
+                    %td.td-actions.text-right
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                        %i.material-icons edit
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                        %i.material-icons close
+                  %tr
+                    %td
+                      .form-check
+                        %label.form-check-label
+                          %input.form-check-input{:type => "checkbox", :value => ""}/
+                          %span.form-check-sign
+                            %span.check
+                    %td Lines From Great Russian Literature? Or E-mails From My Boss?
+                    %td.td-actions.text-right
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                        %i.material-icons edit
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                        %i.material-icons close
+                  %tr
+                    %td
+                      .form-check
+                        %label.form-check-label
+                          %input.form-check-input{:type => "checkbox", :value => ""}/
+                          %span.form-check-sign
+                            %span.check
+                    %td
+                      Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                    %td.td-actions.text-right
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                        %i.material-icons edit
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                        %i.material-icons close
+                  %tr
+                    %td
+                      .form-check
+                        %label.form-check-label
+                          %input.form-check-input{:checked => "checked", :type => "checkbox", :value => ""}/
+                          %span.form-check-sign
+                            %span.check
+                    %td Create 4 Invisible User Experiences you Never Knew About
+                    %td.td-actions.text-right
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                        %i.material-icons edit
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                        %i.material-icons close
+            #messages.tab-pane
+              %table.table
+                %tbody
+                  %tr
+                    %td
+                      .form-check
+                        %label.form-check-label
+                          %input.form-check-input{:checked => "checked", :type => "checkbox", :value => ""}/
+                          %span.form-check-sign
+                            %span.check
+                    %td
+                      Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                    %td.td-actions.text-right
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                        %i.material-icons edit
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                        %i.material-icons close
+                  %tr
+                    %td
+                      .form-check
+                        %label.form-check-label
+                          %input.form-check-input{:type => "checkbox", :value => ""}/
+                          %span.form-check-sign
+                            %span.check
+                    %td Sign contract for "What are conference organizers afraid of?"
+                    %td.td-actions.text-right
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                        %i.material-icons edit
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                        %i.material-icons close
+            #settings.tab-pane
+              %table.table
+                %tbody
+                  %tr
+                    %td
+                      .form-check
+                        %label.form-check-label
+                          %input.form-check-input{:type => "checkbox", :value => ""}/
+                          %span.form-check-sign
+                            %span.check
+                    %td Lines From Great Russian Literature? Or E-mails From My Boss?
+                    %td.td-actions.text-right
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                        %i.material-icons edit
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                        %i.material-icons close
+                  %tr
+                    %td
+                      .form-check
+                        %label.form-check-label
+                          %input.form-check-input{:checked => "checked", :type => "checkbox", :value => ""}/
+                          %span.form-check-sign
+                            %span.check
+                    %td
+                      Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                    %td.td-actions.text-right
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                        %i.material-icons edit
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                        %i.material-icons close
+                  %tr
+                    %td
+                      .form-check
+                        %label.form-check-label
+                          %input.form-check-input{:checked => "checked", :type => "checkbox", :value => ""}/
+                          %span.form-check-sign
+                            %span.check
+                    %td Sign contract for "What are conference organizers afraid of?"
+                    %td.td-actions.text-right
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                        %i.material-icons edit
+                      %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                        %i.material-icons close
+
 
 :javascript
+  demo = {
+    initDocumentationCharts: function() {
+        if ($('#dailySalesChart').length != 0 && $('#websiteViewsChart').length != 0) {
+            dataDailySalesChart = {
+                labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+                series: [
+                    [12, 17, 7, 17, 23, 18, 38]
+                ]
+            };
+            optionsDailySalesChart = {
+                lineSmooth: Chartist.Interpolation.cardinal({
+                    tension: 0
+                }),
+                low: 0,
+                high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+                chartPadding: {
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                },
+            }
 
+            var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+
+            var animationHeaderChart = new Chartist.Line('#websiteViewsChart', dataDailySalesChart, optionsDailySalesChart);
+        }
+    },
+
+    initGoogleMaps: function() {
+        var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
+        var mapOptions = {
+            zoom: 13,
+            center: myLatlng,
+            scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
+            styles: [
+  {
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#f5f5f5"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#f5f5f5"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#bdbdbd"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#eeeeee"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e5e5e5"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#ffffff"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dadada"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e5e5e5"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#eeeeee"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#c9c9c9"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  }
+  ]
+
+        };
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            title: "Hello World!"
+        });
+        // To add the marker to the map, call setMap();
+        marker.setMap(map);
+    }
+  }

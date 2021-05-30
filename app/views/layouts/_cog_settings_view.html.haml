@@ -1,0 +1,48 @@
+.dropdown.show-dropdown
+  %a{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
+    %i.fa.fa-cog.fa-2x
+  %ul.dropdown-menu
+    %li.header-title Sidebar Filters
+    %li.adjustments-line
+      %a.switch-trigger.active-color{:href => "javascript:void(0)"}
+        .badge-colors.ml-auto.mr-auto
+          %span.badge.filter.badge-purple.active{"data-color" => "purple"}
+          %span.badge.filter.badge-azure{"data-color" => "azure"}
+          %span.badge.filter.badge-green{"data-color" => "green"}
+          %span.badge.filter.badge-warning{"data-color" => "orange"}
+          %span.badge.filter.badge-danger{"data-color" => "danger"}
+        .clearfix
+    %li.header-title Images
+    %li
+      %a.img-holder.switch-trigger{:href => "javascript:void(0)"}
+        -# %img{:alt => "", :src => "../assets/img/sidebar-1.jpg"}/
+    %li.active
+      %a.img-holder.switch-trigger{:href => "javascript:void(0)"}
+        -# %img{:alt => "", :src => "../assets/img/sidebar-2.jpg"}/
+    %li
+      %a.img-holder.switch-trigger{:href => "javascript:void(0)"}
+        -# %img{:alt => "", :src => "../assets/img/sidebar-3.jpg"}/
+    %li
+      %a.img-holder.switch-trigger{:href => "javascript:void(0)"}
+        -# %img{:alt => "", :src => "../assets/img/sidebar-4.jpg"}/
+    %li.button-container
+      %a.btn.btn-primary.btn-block{:href => "/", :target => "_blank"} Free Download
+    %li.header-title Want more components?
+    %li.button-container
+      %a.btn.btn-warning.btn-block{:href => "/", :target => "_blank"}
+        Get the pro version
+    %li.button-container
+      %a.btn.btn-default.btn-block{:href => "/", :target => "_blank"}
+        View Documentation
+    %li.button-container.github-star
+      %a.github-button{"aria-label" => "Star ntkme/github-buttons on GitHub", "data-icon" => "octicon-star", "data-show-count" => "true", "data-size" => "large", :href => "/"} Star
+    %li.header-title Thank you for 95 shares!
+    %li.button-container.text-center
+      %button#twitter.btn.btn-round.btn-twitter
+        %i.fa.fa-twitter
+        · 45
+      %button#facebook.btn.btn-round.btn-facebook
+        %i.fa.fa-facebook-f
+        · 50
+      %br
+      %br

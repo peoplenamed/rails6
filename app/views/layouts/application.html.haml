@@ -1,43 +1,402 @@
 !!!
-%html
+%html{:lang => "en"}
   %head
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
-    %title Project
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no", :name => "viewport"}
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %title=@APPLICATION_NAME
+    %link{:href => "https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css", :rel => "stylesheet"}
+    %link{:href => "//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css", :rel => "stylesheet"}
+    %script{:src => "//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"}
     %script{:src => "https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"}
-    %script{:src => "https://npmcdn.com/bootstrap@4.0.0-alpha.5/dist/js/bootstrap.min.js"}
 
-  %body
-    #messages
-    - if user_signed_in?
-      = tag :meta, name: 'current-user', data: {id: current_user.id}
-      .header-view
-        = render partial: "layouts/header_view"
-      .side-view
-        = render partial: "layouts/side_view"
-    .main-view
-      .main-container{style:'width:100%; height:100%; z-index:1; padding: 10px;'}
+  %body.dark-edition
+    .wrapper
+      = render partial: "layouts/side_view"
+    .main-panel
+      = render partial: "layouts/header_view"
+      .content
         = yield
-        #flashy
-          = render 'layouts/flash_notice'
-      #dragbar
-      = render 'layouts/modal'
-
-    %footer.navbar-fixed-bottom
-
-      = render partial: '/main/main_footer'
-
+    #cog-wheel-button.fixed-plugin
+      = render partial: "layouts/cog_settings_view"
 :javascript
-  setTimeout(function(){ 
+  setTimeout(() =>{ 
     $(document).find('.alert').fadeOut();
   }, 3500);
-
-  $(document).find('.alert').off('click').on('click', function(){
+  $(document).find('.alert').off('click').on('click', () =>{
     $(this).fadeOut();
   })
+  $(document).ready(() => {
+    $().ready(() => {
+      $sidebar = $('.sidebar');
+      $sidebar_img_container = $sidebar.find('.sidebar-background');
+      $full_page = $('.full-page');
+      $sidebar_responsive = $('body > .navbar-collapse');
+      window_width = $(window).width();
+
+      $('#cog-wheel-button').click((event) => {
+        event.stopPropagation();
+        if ($(event.target).hasClass("fa fa-cog fa-2x")) {
+          togglePopUp();
+        }
+      });
+      $('body').click(function (event) {
+        if(!$(event.target).closest('#cog-wheel-button .dropdown.show-dropdown.show').length && !$(event.target).is('#cog-wheel-button .dropdown.show-dropdown.show')) {
+          removePopUp();
+        }     
+      });
+
+      togglePopUp = () => {
+        $(".fixed-plugin .dropdown-menu").toggleClass("show");
+        $(".fixed-plugin .dropdown").toggleClass("show");  
+      }
+
+      removePopUp = () => {
+        $(".fixed-plugin .dropdown-menu").removeClass("show");
+        $(".fixed-plugin .dropdown").removeClass("show");  
+      }
+    });
+  });
+
+  // =========================================================
+  // * Material Dashboard Dark Edition - v2.1.0
+  // =========================================================
+  //
+  // * Product Page: https://www.creative-tim.com/product/material-dashboard-dark
+  // * Copyright 2019 Creative Tim (http://www.creative-tim.com)
+  //
+  // =========================================================
+  //
+  // * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+  isWindows = -1 < navigator.platform.indexOf("Win"),
+  isWindows ? ($(".sidebar .sidebar-wrapper, .main-panel").perfectScrollbar(),
+  $("html").addClass("perfect-scrollbar-on")) : $("html").addClass("perfect-scrollbar-off");
+  var breakCards = !0
+    , searchVisible = 0
+    , transparent = !0
+    , transparentDemo = !0
+    , fixedTop = !1
+    , mobile_menu_visible = 0
+    , mobile_menu_initialized = !1
+    , toggle_initialized = !1
+    , bootstrap_nav_initialized = !1
+    , seq = 0
+    , delays = 80
+    , durations = 500
+    , seq2 = 0
+    , delays2 = 80
+    , durations2 = 500;
+  function debounce(n, i, t) {
+      var r;
+      return () => {
+          var e = this
+            , a = arguments;
+          clearTimeout(r),
+          r = setTimeout(() => {
+              r = null,
+              t || n.apply(e, a)
+          }, i),
+          t && !r && n.apply(e, a)
+      }
+  }
+  $(document).ready(() => {
+      $sidebar = $(".sidebar"),
+      md.initSidebarsCheck(),
+      window_width = $(window).width(),
+      md.checkSidebarImage(),
+      0 != $(".selectpicker").length && $(".selectpicker").selectpicker(),
+      $('[rel="tooltip"]').tooltip(),
+      $(".form-control").on("focus", () => {
+          $(this).parent(".input-group").addClass("input-group-focus")
+      }).on("blur", () => {
+          $(this).parent(".input-group").removeClass("input-group-focus")
+      }),
+      $('input[type="checkbox"][required="true"], input[type="radio"][required="true"]').on("click", () => {
+          $(this).hasClass("error") && $(this).closest("div").removeClass("has-error")
+      })
+  }),
+  $(document).on("click", ".navbar-toggler", () => {
+      if ($toggle = $(this),
+      1 == mobile_menu_visible)
+          $("html").removeClass("nav-open"),
+          $(".close-layer").remove(),
+          setTimeout(() => {
+              $toggle.removeClass("toggled")
+          }, 400),
+          mobile_menu_visible = 0;
+      else {
+          setTimeout(() => {
+              $toggle.addClass("toggled")
+          }, 430);
+          var e = $('<div class="close-layer"></div>');
+          0 != $("body").find(".main-panel").length ? e.appendTo(".main-panel") : $("body").hasClass("off-canvas-sidebar") && e.appendTo(".wrapper-full-page"),
+          setTimeout(() => {
+              e.addClass("visible")
+          }, 100),
+          e.click(() => {
+              $("html").removeClass("nav-open"),
+              mobile_menu_visible = 0,
+              e.removeClass("visible"),
+              setTimeout(() => {
+                  e.remove(),
+                  $toggle.removeClass("toggled")
+              }, 400)
+          }),
+          $("html").addClass("nav-open"),
+          mobile_menu_visible = 1
+      }
+  }),
+  $(window).resize(() => {
+      md.initSidebarsCheck(),
+      seq = seq2 = 0,
+      setTimeout(() => {
+          md.initDashboardPageCharts()
+      }, 500)
+  }),
+  md = {
+      misc: {
+          navbar_menu_visible: 0,
+          active_collapse: !0,
+          disabled_collapse_init: 0
+      },
+      checkSidebarImage: () => {
+          $sidebar = $(".sidebar"),
+          image_src = $sidebar.data("image"),
+          void 0 !== image_src && (sidebar_container = '<div class="sidebar-background" style="background-image: url(' + image_src + ') "/>',
+          $sidebar.append(sidebar_container))
+      },
+      initSidebarsCheck: () => {
+          $(window).width() <= 991 && 0 != $sidebar.length && md.initRightMenu()
+      },
+      initDashboardPageCharts: () => {
+          if (0 != $("#dailySalesChart").length || 0 != $("#completedTasksChart").length || 0 != $("#websiteViewsChart").length) {
+            const DATA_DAILY_SALES_CHART = JSON.parse('#{@DATA_DAILY_SALES_CHART.to_json.html_safe}');
+            const OTIONS_DAILY_SALES_CHART = JSON.parse('#{@OTIONS_DAILY_SALES_CHART.to_json.html_safe}');
+            var e = new Chartist.Line("#dailySalesChart", DATA_DAILY_SALES_CHART, OTIONS_DAILY_SALES_CHART);
+            md.startAnimationForLineChart(e);
+
+            const DATA_COMPLETED_TASKS_CHART = JSON.parse('#{@DATA_COMPLETED_TASKS_CHART.to_json.html_safe}');
+            const OPTIONS_COMPLETED_TASKS_CHART = JSON.parse('#{@OPTIONS_COMPLETED_TASKS_CHART.to_json.html_safe}');
+            var a = new Chartist.Line("#completedTasksChart", DATA_COMPLETED_TASKS_CHART, OPTIONS_COMPLETED_TASKS_CHART);
+            md.startAnimationForLineChart(a);
+            var n = Chartist.Bar("#websiteViewsChart", {
+              labels: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+              series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]]
+            }, {
+              axisX: {
+                  showGrid: !1
+              },
+              low: 0,
+              high: 1e3,
+              chartPadding: {
+                top: 0,
+                right: 5,
+                bottom: 0,
+                left: 0
+              }
+            }, [["screen and (max-width: 640px)", {
+              seriesBarDistance: 5,
+              axisX: {
+                labelInterpolationFnc: function(e) {
+                  return e[0]
+                }
+              }
+            }]]);
+            md.startAnimationForBarChart(n)
+          }
+      },
+      checkScrollForTransparentNavbar: debounce(() => {
+          260 < $(document).scrollTop() ? transparent && (transparent = !1,
+          $(".navbar-color-on-scroll").removeClass("navbar-transparent")) : transparent || (transparent = !0,
+          $(".navbar-color-on-scroll").addClass("navbar-transparent"))
+      }, 17),
+      initRightMenu: debounce(() => {
+          $sidebar_wrapper = $(".sidebar-wrapper"),
+          mobile_menu_initialized ? 991 < $(window).width() && ($sidebar_wrapper.find(".navbar-form").remove(),
+          $sidebar_wrapper.find(".nav-mobile-menu").remove(),
+          mobile_menu_initialized = !1) : (console.log("intra"),
+          $navbar = $("nav").find(".navbar-collapse").children(".navbar-nav"),
+          mobile_menu_content = "",
+          nav_content = $navbar.html(),
+          nav_content = '<ul class="nav navbar-nav nav-mobile-menu">' + nav_content + "</ul>",
+          navbar_form = 0 != $("nav").find(".navbar-form").length ? $("nav").find(".navbar-form")[0].outerHTML : null,
+          $sidebar_nav = $sidebar_wrapper.find(" > .nav"),
+          $nav_content = $(nav_content),
+          $navbar_form = $(navbar_form),
+          $nav_content.insertBefore($sidebar_nav),
+          $navbar_form.insertBefore($nav_content),
+          $(".sidebar-wrapper .dropdown .dropdown-menu > li > a").click(function(e) {
+              e.stopPropagation()
+          }),
+          window.dispatchEvent(new Event("resize")),
+          mobile_menu_initialized = !0)
+      }, 200),
+      startAnimationForLineChart: function(e) {
+          e.on("draw", function(e) {
+              "line" !== e.type && "area" !== e.type || !window.matchMedia("(min-width: 900px)").matches ? "point" === e.type && (seq++,
+              e.element.animate({
+                  opacity: {
+                      begin: seq * delays,
+                      dur: durations,
+                      from: 0,
+                      to: 1,
+                      easing: "ease"
+                  }
+              })) : e.element.animate({
+                  d: {
+                      begin: 600,
+                      dur: 700,
+                      from: e.path.clone().scale(1, 0).translate(0, e.chartRect.height()).stringify(),
+                      to: e.path.clone().stringify(),
+                      easing: Chartist.Svg.Easing.easeOutQuint
+                  }
+              })
+          }),
+          seq = 0
+      },
+      startAnimationForBarChart: function(e) {
+          e.on("draw", function(e) {
+              "bar" === e.type && window.matchMedia("(min-width: 900px)").matches && (seq2++,
+              e.element.animate({
+                  opacity: {
+                      begin: seq2 * delays2,
+                      dur: durations2,
+                      from: 0,
+                      to: 1,
+                      easing: "ease"
+                  }
+              }))
+          }),
+          seq2 = 0
+      }
+  };
+
+
+:css
+  .tim-typo{
+    padding-left: 25%;
+    margin-bottom: 40px;
+    position: relative;
+    width: 100%;
+  }
+  .tim-typo .tim-note{
+      bottom: 5px;
+      color: #c0c1c2;
+      display: block;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 15px;
+      left: 0;
+      margin-left: 20px;
+      position: absolute;
+      width: 260px;
+  }
+
+  /* offline-doc */
+
+  .offline-doc .navbar.navbar-transparent {
+    padding-top: 25px;
+    border-bottom: none;
+  }
+
+  .offline-doc .navbar.navbar-transparent .navbar-minimize {
+    display: none;
+  }
+
+  .offline-doc .navbar.navbar-transparent .navbar-brand,
+  .offline-doc .navbar.navbar-transparent .collapse .navbar-nav .nav-link {
+    color: #FFF;
+  }
+  .offline-doc .footer {
+    z-index: 3 !important;
+    position: absolute;
+    width: 100%;
+    background: transparent;
+    bottom: 0;
+    color: #fff;
+  }
+  .offline-doc .page-header .content-center{
+    z-index: 3;
+  }
+
+  .offline-doc .brand .title {
+    color: #fff;
+  }
+
+  .offline-doc .footer {
+    z-index: 3 !important;
+  }
+
+  .offline-doc .page-header .container {
+    z-index: 3;
+  }
+
+  .offline-doc .page-header:after {
+    background-color: rgba(0,0,0, 0.5);
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+
+  @media all and (max-width: 991px) {
+    .offline-doc .navbar .navbar-collapse.collapse,
+    .offline-doc .navbar .navbar-collapse.collapse.in,
+    .offline-doc .navbar .navbar-collapse.collapsing {
+      display: block !important;
+    }
+
+    .nav-open .offline-doc .navbar-wrapper,
+    .nav-open .offline-doc .navbar-toggler {
+      -webkit-transform: translate3d(-260px, 0, 0);
+      -moz-transform: translate3d(-260px, 0, 0);
+      -o-transform: translate3d(-260px, 0, 0);
+      -ms-transform: translate3d(-260px, 0, 0);
+      transform: translate3d(-260px, 0, 0);
+    }
+
+    .offline-doc .navbar-wrapper,
+    .offline-doc .navbar-toggler {
+      -webkit-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+        -moz-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+        -o-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+        -ms-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+        transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    }
+
+    .offline-doc .navbar .collapse .navbar-nav .nav-item .nav-link {
+      margin-left: 15px;
+      color: #8b92a9 !important;
+    }
+  }
 
 
 
+
+  #map{
+    z-index: 2;
+    height: calc(100vh - 70px);
+    margin-top: 70px;
+  }
+
+  .bd-docs.dark-edition .bd-example{
+    background-color: #1a2035;
+    border: 0;
+    border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .bd-docs.dark-edition {
+    background-color: #fff;
+  }

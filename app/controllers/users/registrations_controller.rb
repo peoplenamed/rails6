@@ -15,12 +15,56 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @ACTIVE_LINK = "person"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "XXXXXXXXXXXXXXXXXXXXXX"
+    puts "@ACTIVE_LINK #{@ACTIVE_LINK}"
+    super
+  end
 
   # PUT /resource
   # def update
+  #   user_params
   #   super
   # end
 
@@ -38,7 +82,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

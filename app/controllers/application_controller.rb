@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :set_app_name
   before_action :set_app_stats
   before_action :getNavigation
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
 
   def set_app_name
@@ -57,11 +58,10 @@ class ApplicationController < ActionController::Base
       {
         href: "/",
         icon: "dashboard",
-        text: "Dashboard",
-        active: active == "dashboard" || active.nil?
+        text: "Dashboard"
       },
       {
-        href: "/",
+        href: "/users/edit",
         icon: "person",
         text: "Profile",
         active: active == "person"
@@ -103,4 +103,11 @@ class ApplicationController < ActionController::Base
 
   end
 
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:account_update, keys: [:firstname, :lastname, :address1, :address2, :city, :country, :zip, :about])
+  end
+
 end
+

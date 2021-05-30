@@ -9,7 +9,7 @@
   .sidebar-wrapper
     %ul.nav
       - @NAVIGATION_LINKS.each do |link|
-        %li.nav-item{class: "#{link[:active] ? 'active' : ''}"}
+        %li.nav-item{class: "#{@ACTIVE_LINK.nil? && link[:icon] == 'dashboard' || @ACTIVE_LINK == link[:icon] ? 'active' : ''}"}
           %a.nav-link{:href => "#{link[:href]}"}
             %i.material-icons=link[:icon]
             %p= link[:text]

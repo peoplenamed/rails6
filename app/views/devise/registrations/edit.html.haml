@@ -1,0 +1,98 @@
+.container-fluid
+  .row
+    .col-md-8
+      .card
+        .card-header.card-header-primary
+          %h4.card-title Edit Profile
+          %p.card-category Complete your profile
+        .card-body
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put}) do |form|
+            = render "devise/shared/error_messages", resource: resource
+            .row
+              .col-md-5
+                .form-group.bmd-form-group
+                  %label Company
+                  %input.form-control{:placeholder => "Company (disabled)", :disabled => "disabled", :type => "text"}/
+              .col-md-3
+                .form-group.bmd-form-group
+                  %label Username
+                  %input.form-control{:placeholder => "Username", :type => "text"}/
+              .col-md-4
+                .form-group.bmd-form-group
+                  %label Email
+                  = form.text_field :email, :type => "email", :placeholder => "Email address", :class => "form-control"
+                - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                  %div{style: "color:red;"}
+                    Currently waiting confirmation for: #{resource.unconfirmed_email}
+            .row
+              .col-md-6
+                .form-group.bmd-form-group
+                  %label First Name
+                  = form.text_field :firstname, :type => "text", :placeholder => "First Name", :class => "form-control"
+              .col-md-6
+                .form-group.bmd-form-group
+                  %label Last Name
+                  = form.text_field :lastname, :type => "text", :placeholder => "Last Name", :class => "form-control"
+            .row
+              .col-md-6
+                .form-group.bmd-form-group
+                  %label Address
+                  = form.text_field :address1, :type => "text", :placeholder => "Adress 1", :class => "form-control"
+              .col-md-6
+                .form-group.bmd-form-group
+                  %label Address
+                  = form.text_field :address2, :type => "text", :placeholder => "Adress 2", :class => "form-control"
+            .row
+              .col-md-4
+                .form-group.bmd-form-group
+                  %label City
+                  = form.text_field :city, :type => "text", :placeholder => "City", :class => "form-control"
+              .col-md-4
+                .form-group.bmd-form-group
+                  %label Country
+                  = form.text_field :country, :type => "text", :placeholder => "Country", :class => "form-control"
+              .col-md-4
+                .form-group.bmd-form-group
+                  %label Postal Code
+                  = form.text_field :zip, :type => "text", :placeholder => "Postal Code", :class => "form-control"
+            .row
+              .col-md-4
+                .form-group.bmd-form-group
+                  %label Password
+                  .fa.fa-question-circle{title: "Leave blank if you don't want to change it"}
+                  = form.text_field :current_password, :type => "password", :placeholder => "Current Password", :class => "form-control", :id => "password-input"
+              .col-md-4
+                .form-group.bmd-form-group
+                  %label New Password
+                  = form.text_field :password, :type => "password", :placeholder => "New Password", :class => "form-control"
+              .col-md-4
+                .form-group.bmd-form-group
+                  %label Confirm New Password
+                  = form.text_field :password_confirmation, :type => "password", :placeholder => "Password Confirmation", :class => "form-control"
+            .row
+              .col-md-12
+                .form-group
+                  %label About Me
+                  .form-group.bmd-form-group
+                    = form.text_area :about, :type => "about", :placeholder => "I like to code. :)", :class => "form-control", :rows => "5"
+            %button.btn.btn-primary.pull-right{:type => "submit"} Update Profile
+            .clearfix
+    .col-md-4
+      .card.card-profile
+        .card-avatar
+          %a{:href => "#pablo"}
+            %img.img{:src => "../assets/img/faces/marc.jpg"}/
+        .card-body
+          %h6.card-category CEO / Co-Founder
+          %h4.card-title= :email
+          %p.card-description
+            Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+          %a.btn.btn-primary.btn-round{:href => "#pablo"} Follow
+:javascript
+  $(document).ready(() => {
+    $().ready(() => {
+      setTimeout(() => {
+        $("#password-input").val("");
+      }, 800);
+    })
+  })

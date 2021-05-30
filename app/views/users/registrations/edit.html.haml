@@ -1,0 +1,109 @@
+.container-fluid
+  .row
+    .col-md-8
+      .card
+        .card-header.card-header-primary
+          %h4.card-title Edit Profilews
+          %p.card-category Complete your profile
+        .card-body
+          %form
+            .row
+              .col-md-5
+                .form-group.bmd-form-group
+                  %label.bmd-label-floating Company (disabled)
+                  %input.form-control{:disabled => "disabled", :type => "text", :autocomplete => "off"}/
+              .col-md-3
+                .form-group.bmd-form-group
+                  %label.bmd-label-floating Username
+                  %input.form-control{:type => "text", :autocomplete => "off"}/
+              .col-md-4
+                .form-group.bmd-form-group
+                  %label.bmd-label-floating Email address
+                  %input.form-control{:type => "email"}/
+            .row
+              .col-md-6
+                .form-group.bmd-form-group
+                  %label.bmd-label-floating Fist Name
+                  %input.form-control{:type => "text", :autocomplete => "off"}/
+              .col-md-6
+                .form-group.bmd-form-group
+                  %label.bmd-label-floating Last Name
+                  %input.form-control{:type => "text", :autocomplete => "off"}/
+            .row
+              .col-md-12
+                .form-group.bmd-form-group
+                  %label.bmd-label-floating Adress
+                  %input.form-control{:type => "text", :autocomplete => "off"}/
+            .row
+              .col-md-4
+                .form-group.bmd-form-group
+                  %label.bmd-label-floating City
+                  %input.form-control{:type => "text", :autocomplete => "off"}/
+              .col-md-4
+                .form-group.bmd-form-group
+                  %label.bmd-label-floating Country
+                  %input.form-control{:type => "text", :autocomplete => "off"}/
+              .col-md-4
+                .form-group.bmd-form-group
+                  %label.bmd-label-floating Postal Code
+                  %input.form-control{:type => "text", :autocomplete => "off"}/
+            .row
+              .col-md-12
+                .form-group
+                  %label About Me
+                  .form-group.bmd-form-group
+                    %label.bmd-label-floating I like to code.
+                    %textarea.form-control{:rows => "5"}
+            %button.btn.btn-primary.pull-right{:type => "submit"} Update Profile
+            .clearfix
+    .col-md-4
+      .card.card-profile
+        .card-avatar
+          %a{:href => "#pablo"}
+            %img.img{:src => "../assets/img/faces/marc.jpg"}/
+        .card-body
+          %h6.card-category CEO / Co-Founder
+          %h4.card-title Alec Thompson
+          %p.card-description
+            Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+          %a.btn.btn-primary.btn-round{:href => "#pablo"} Follow
+
+
+
+%h2
+  Edit #{resource_name.to_s.humanize}
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = render "devise/shared/error_messages", resource: resource
+
+  .field
+    = f.label :email
+    %br/
+    = f.email_field :email, autofocus: true
+  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+    %div
+      Currently waiting confirmation for: #{resource.unconfirmed_email}
+  .field
+    = f.label :password
+    %i (leave blank if you don't want to change it)
+    %br/
+    = f.password_field :password, autocomplete: "off"
+    - if @minimum_password_length
+      %br/
+      %em
+        = @minimum_password_length
+        characters minimum
+  .field
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "off"
+  .field
+    = f.label :current_password
+    %i (we need your current password to confirm your changes)
+    %br/
+    = f.password_field :current_password, autocomplete: "off"
+  .actions
+    = f.submit "Update"
+%h3 Cancel my account
+%p
+  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+= link_to "Back", :back

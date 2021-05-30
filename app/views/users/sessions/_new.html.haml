@@ -1,17 +1,22 @@
-%h4 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in", class: "btn btn-primary"
-= # render "users/shared/links"
+.container
+  .row.justify-content-center.align-self-center
+    .card{:style => "width: 18rem;"}
+      .card-body
+        %h5.card-title=@APPLICATION_NAME
+        %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .field
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true
+          .field
+            = f.label :password
+            %br/
+            = f.password_field :password, autocomplete: "off"
+          - if devise_mapping.rememberable?
+            .field
+              = f.check_box :remember_me
+              = f.label :remember_me
+          .actions
+            = f.submit "Log in", class: "btn btn-primary"
+        = render "users/shared/links"

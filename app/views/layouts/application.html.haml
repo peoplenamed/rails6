@@ -8,6 +8,8 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    
+    =# stylesheet_pack_tag 'application', media: 'all'
     %title=@APPLICATION_NAME
     %link{:href => "https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css", :rel => "stylesheet"}
     %link{:href => "//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css", :rel => "stylesheet"}
@@ -15,14 +17,19 @@
     %script{:src => "https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"}
 
   %body.dark-edition
-    .wrapper
-      = render partial: "layouts/side_view"
-    .main-panel
-      = render partial: "layouts/header_view"
-      .content
-        = yield
-    #cog-wheel-button.fixed-plugin
-      = render partial: "layouts/cog_settings_view"
+    - if current_user.present?
+      .wrapper
+        = render partial: "layouts/side_view"
+        .main-panel
+          = render partial: "layouts/header_view"
+          .content
+            = yield
+        #cog-wheel-button.fixed-plugin
+          = render partial: "layouts/cog_settings_view"
+    - else
+      = render "users/sessions/new"
+
+
 :javascript
   setTimeout(() =>{ 
     $(document).find('.alert').fadeOut();
@@ -47,7 +54,12 @@
       $('body').click(function (event) {
         if(!$(event.target).closest('#cog-wheel-button .dropdown.show-dropdown.show').length && !$(event.target).is('#cog-wheel-button .dropdown.show-dropdown.show')) {
           removePopUp();
-        }     
+        }
+
+        if (!$(event.target).closest('#navbarDropdownMenuLink').length && !$(event.target).is('#navbarDropdownMenuLink')) {
+          $(".dropdown-menu.dropdown-menu-right").removeClass("show");
+        }
+
       });
 
       togglePopUp = () => {
@@ -105,20 +117,21 @@
       }
   }
   $(document).ready(() => {
-      $sidebar = $(".sidebar"),
-      md.initSidebarsCheck(),
-      window_width = $(window).width(),
-      md.checkSidebarImage(),
-      0 != $(".selectpicker").length && $(".selectpicker").selectpicker(),
-      $('[rel="tooltip"]').tooltip(),
-      $(".form-control").on("focus", () => {
-          $(this).parent(".input-group").addClass("input-group-focus")
-      }).on("blur", () => {
-          $(this).parent(".input-group").removeClass("input-group-focus")
-      }),
-      $('input[type="checkbox"][required="true"], input[type="radio"][required="true"]').on("click", () => {
-          $(this).hasClass("error") && $(this).closest("div").removeClass("has-error")
-      })
+    $sidebar = $(".sidebar"),
+    md.initSidebarsCheck(),
+    window_width = $(window).width(),
+    md.checkSidebarImage(),
+    0 != $(".selectpicker").length && $(".selectpicker").selectpicker(),
+    $('[rel="tooltip"]').tooltip(),
+    $(".form-control").on("focus", () => {
+        $(this).parent(".input-group").addClass("input-group-focus")
+    }).on("blur", () => {
+        $(this).parent(".input-group").removeClass("input-group-focus")
+    }),
+    $('input[type="checkbox"][required="true"], input[type="radio"][required="true"]').on("click", () => {
+        $(this).hasClass("error") && $(this).closest("div").removeClass("has-error")
+    })
+    initializeCharts();
   }),
   $(document).on("click", ".navbar-toggler", () => {
       if ($toggle = $(this),
@@ -154,10 +167,13 @@
   $(window).resize(() => {
       md.initSidebarsCheck(),
       seq = seq2 = 0,
-      setTimeout(() => {
-          md.initDashboardPageCharts()
-      }, 500)
+      initializeCharts();
   }),
+  initializeCharts = () => {
+    setTimeout(() => {
+      md.initDashboardPageCharts()
+    }, 500)
+  }
   md = {
       misc: {
           navbar_menu_visible: 0,

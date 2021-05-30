@@ -118,31 +118,32 @@
                 %td Philip Chaney
                 %td $38,735
                 %td Korea, South
+
+
     .col-lg-6.col-md-12
       .card
         .card-header.card-header-tabs.card-header-warning
-          .nav-tabs-navigation
-            .nav-tabs-wrapper
-              %span.nav-tabs-title Tasks:
-              %ul.nav.nav-tabs{"data-tabs" => "tabs"}
+          %nav
+            #nav-tab.nav.nav-tabs{:role => "tablist"}
+              %ul.nav.nav-tabs
                 %li.nav-item
-                  %a.nav-link.active{"data-toggle" => "tab", :href => "#profile"}
+                  %a.nav-link.active{"aria-controls" => "nav-home", "aria-selected" => "true", "data-bs-target" => "#nav-home", "data-bs-toggle" => "tab", :role => "tab"}
                     %i.material-icons bug_report
                     Bugs
                     .ripple-container
                 %li.nav-item
-                  %a.nav-link{"data-toggle" => "tab", :href => "#messages"}
+                  %a.nav-link{"aria-controls" => "nav-profile", "aria-selected" => "false", "data-bs-target" => "#nav-profile", "data-bs-toggle" => "tab", :role => "tab"}
                     %i.material-icons code
                     Website
                     .ripple-container
                 %li.nav-item
-                  %a.nav-link{"data-toggle" => "tab", :href => "#settings"}
+                  %a.nav-link{"aria-controls" => "nav-contact", "aria-selected" => "false", "data-bs-target" => "#nav-contact", "data-bs-toggle" => "tab", :role => "tab"}
                     %i.material-icons cloud
                     Server
                     .ripple-container
         .card-body
-          .tab-content
-            #profile.tab-pane.active
+          #nav-tabContent.tab-content
+            #nav-home.tab-pane.fade.show.active{"aria-labelledby" => "nav-home-tab", :role => "tabpanel"}
               %table.table
                 %tbody
                   %tr
@@ -198,7 +199,7 @@
                         %i.material-icons edit
                       %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
                         %i.material-icons close
-            #messages.tab-pane
+            #nav-profile.tab-pane.fade{"aria-labelledby" => "nav-profile-tab", :role => "tabpanel"}
               %table.table
                 %tbody
                   %tr
@@ -228,7 +229,7 @@
                         %i.material-icons edit
                       %button.btn.btn-white.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
                         %i.material-icons close
-            #settings.tab-pane
+            #nav-contact.tab-pane.fade{"aria-labelledby" => "nav-contact-tab", :role => "tabpanel"}
               %table.table
                 %tbody
                   %tr

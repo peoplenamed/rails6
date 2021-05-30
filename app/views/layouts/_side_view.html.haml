@@ -1,4 +1,5 @@
-.sidebar{"data-background-color" => "black", "data-color" => "purple", "data-image" => "../assets/img/sidebar-2.jpg"}
+- # .sidebar{"data-background-color" => "black", "data-color" => "purple", "data-image" => "../assets/img/sidebar-2.jpg"}
+.sidebar{"data-background-color" => "black", "data-color" => "purple"}
   /
     Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
     
@@ -12,4 +13,5 @@
           %a.nav-link{:href => "#{link[:href]}"}
             %i.material-icons=link[:icon]
             %p= link[:text]
-  .sidebar-background{:style => "background-image: url(../assets/img/sidebar-2.jpg) "}
+  - # .sidebar-background{:style => "background-image: url(../assets/img/sidebar-2.jpg) "}
+  .sidebar-background{:style => ""}

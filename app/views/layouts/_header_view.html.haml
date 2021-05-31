@@ -21,8 +21,9 @@
                 Stats
           %li.nav-item.dropdown
             #navbarDropdownMenuLink.nav-link
-              %i.material-icons notifications
-              %span.notification 5
+              %i.material-icons{style:"margin-right: 0; margin-left: 11%;"} notifications
+              .pull-left
+                .numberCircle 5
               %p.d-lg-none.d-md-block
                 Some Actions
             .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "navbarDropdownMenuLink"}
@@ -33,10 +34,12 @@
                     show_modal("#{message.subject}", "#{message.text}")
                   })
           %li.nav-item
-            %a.nav-link{:href => "javascript:void(0)"}
+            %a.nav-link{"data-confirm" => "Are you sure?", "data-method" => "delete", :href => destroy_user_session_path, :rel => "nofollow"}
               %i.fa.fa-space-shuttle
               %p.d-lg-none.d-md-block
-                Account
+                Logout
+        %br\
+        %br\
 
 
 :javascript
@@ -45,3 +48,4 @@
       $(".dropdown-menu.dropdown-menu-right").toggleClass("show");
     });
   });
+

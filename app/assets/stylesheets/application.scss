@@ -5246,7 +5246,20 @@ button.close {
 
 .badge-primary {
     color: #fff;
-    background-color: #2196f3
+    background-color: rgb(123, 31, 162);
+}
+
+.numberCircle {
+    border-radius: 50%;
+    width: 1.1em;
+    height: 1.1em;
+    background: rgb(123, 31, 162);
+    border: 0.1em solid #666;
+    color: #fff;
+    padding-top: 0;
+    padding-right: 0.15em;
+    padding-bottom: 0.15em;
+    padding-left: 0.15em;
 }
 
 .badge-primary[href]:focus,.badge-primary[href]:hover {

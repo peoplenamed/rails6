@@ -12,7 +12,7 @@
   $(document).ready( () => {
     $(".close").click(() => {
       $("#modalWindow").fadeOut('slow');
-      $('body').removeClass('modal-open');
+      $('body').removeClass('modal-open').css("overflow-y", "auto");
       $('.modal-backdrop').remove();
     })
   })

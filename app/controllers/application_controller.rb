@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   before_action :getNavigation
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-
   def set_app_name
     @APPLICATION_NAME = "New Application"
   end

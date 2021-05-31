@@ -14,6 +14,21 @@ class Users::SessionsController < Devise::SessionsController
     super
   end
 
+  def edit
+    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+    raise "ERROR FOOLD"
+    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+    Rails.logger.info "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+    Rails.logger.info "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+    Rails.logger.info "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+    Rails.logger.info "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+    Rails.logger.info "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+    super
+  end
+
   # DELETE /resource/sign_out
   def destroy
     super

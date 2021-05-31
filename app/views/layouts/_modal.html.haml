@@ -7,4 +7,12 @@
       .modal-body
         %p Some text in the modal.
       .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-default.close{"data-dismiss" => "modal", :type => "button"} Close
+:javascript
+  $(document).ready( () => {
+    $(".close").click(() => {
+      $("#modalWindow").fadeOut('slow');
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+    })
+  })

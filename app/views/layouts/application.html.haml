@@ -24,10 +24,12 @@
           = render partial: "layouts/header_view"
           .content
             = yield
-        #cog-wheel-button.fixed-plugin
-          = render partial: "layouts/cog_settings_view"
+        -# #cog-wheel-button.fixed-plugin
+          -# = render partial: "layouts/cog_settings_view"
     - else
       = render "users/sessions/new"
+  = render partial: "layouts/flash_notice"
+  = render partial: "layouts/modal"
 
 
 :javascript

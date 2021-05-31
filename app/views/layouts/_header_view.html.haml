@@ -26,11 +26,12 @@
               %p.d-lg-none.d-md-block
                 Some Actions
             .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "navbarDropdownMenuLink"}
-              %a.dropdown-item{:href => "javascript:void(0)"} Mike John responded to your email
-              %a.dropdown-item{:href => "javascript:void(0)"} You have 5 new tasks
-              %a.dropdown-item{:href => "javascript:void(0)"} You're now friend with Andrew
-              %a.dropdown-item{:href => "javascript:void(0)"} Another Notification
-              %a.dropdown-item{:href => "javascript:void(0)"} Another One
+              - current_user.to_messages.each do |message|
+                .dropdown-item{:id => "message_#{message.id}"}=message.subject
+                :javascript
+                  $("#message_#{message.id}").click(() => {
+                    show_modal("#{message.subject}", "#{message.text}")
+                  })
           %li.nav-item
             %a.nav-link{:href => "javascript:void(0)"}
               %i.fa.fa-space-shuttle

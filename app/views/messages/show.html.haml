@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Text:
+  = @message.text
+%p
+  %b From user:
+  = @message.from_user_id
+%p
+  %b To user:
+  = @message.to_user_id
+
+= link_to 'Edit', edit_message_path(@message)
+\|
+= link_to 'Back', messages_path
